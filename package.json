@@ -1,0 +1,22 @@
+{
+	"name": "sync-array",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "git@github.com:taoqf/sync-array.git",
+	"author": "taoqf <tao_qiufeng@126.com>",
+	"license": "MIT",
+	"scripts": {
+		"test": "ava ./tests/*.test.js",
+		"dev": "tsc -w",
+		"lint": "tslint -p tsconfig.json",
+		"compile:cjs": "tsc -m commonjs",
+		"compile:umd": "tsc -t es5 -m umd --outDir ./umd/",
+		"compile": "npm run compile:cjs & npm run compile:umd",
+		"build": "npm run lint && npm run compile"
+	},
+	"devDependencies": {
+		"ava": "latest",
+		"tslint": "latest",
+		"typescript": "next"
+	}
+}
