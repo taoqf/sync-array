@@ -1,6 +1,6 @@
 {
 	"name": "sync-array",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"main": "index.js",
 	"repository": "git@github.com:taoqf/sync-array.git",
 	"author": "taoqf <tao_qiufeng@126.com>",
@@ -14,6 +14,16 @@
 		"compile": "npm run compile:cjs & npm run compile:umd",
 		"build": "npm run lint && npm run compile"
 	},
+	"keywords": [
+		"array",
+		"async",
+		"sync",
+		"foreach",
+		"each",
+		"map",
+		"every",
+		"some"
+	],
 	"devDependencies": {
 		"ava": "latest",
 		"tslint": "latest",
