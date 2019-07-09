@@ -19,6 +19,7 @@ npm i --save sync-array
 ```ts
 import array from 'sync-array';
 // import forEach from 'sync-array/foreach';
+// const { forEach, map, every, some, reduce, reduceRight } = require('sync-array').default;
 
 function sleep(time: number){
 	return new Promise<void>((resolve)=>{

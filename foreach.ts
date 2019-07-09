@@ -1,12 +1,12 @@
-export async function chain(...args: Array<(...params: any[]) => Promise<any>>): Promise<any> {
+export async function chain(...args: Array<() => Promise<unknown>>): Promise<void> {
 	if (args.length > 0) {
-		const fun = args.shift();
+		const [fun, ...other] = args;
 		if (!fun) {
-			return [];
+			return;
 		}
 
 		await fun();
-		return await chain(...args);
+		return await chain(...other);
 	}
 }
 

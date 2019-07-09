@@ -32,6 +32,7 @@ test('sync-array.every some', async (t) => {
 	const ret = await every(funcs, (fun) => {
 		return fun();
 	});
+	t.is(funcs.length, 3);
 	t.is(ret, false);
 	t.is(v, 4);	// (1+1)*2=1; not (1-3)*2=-4
 });

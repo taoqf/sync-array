@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 async function chain(...args) {
     if (args.length > 0) {
-        const fun = args.shift();
+        const [fun, ...other] = args;
         if (!fun) {
-            return [];
+            return;
         }
         await fun();
-        return await chain(...args);
+        return await chain(...other);
     }
 }
 exports.chain = chain;

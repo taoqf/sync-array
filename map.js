@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 async function chain_map(...args) {
     if (args.length > 0) {
-        const fun = args.shift();
+        const [fun, ...other] = args;
         if (!fun) {
             return [];
         }
         const ret = await fun();
-        return [ret].concat(await chain_map(...args));
+        return [ret].concat(await chain_map(...other));
     }
     else {
         return [];

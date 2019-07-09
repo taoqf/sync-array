@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 async function chain_some(...args) {
     if (args.length > 0) {
-        const fun = args.shift();
+        const [fun, ...other] = args;
         if (!fun) {
             return false;
         }
@@ -10,7 +10,7 @@ async function chain_some(...args) {
         if (!!ret) {
             return true;
         }
-        return await chain_some(...args);
+        return await chain_some(...other);
     }
     else {
         return false;

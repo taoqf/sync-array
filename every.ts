@@ -1,6 +1,6 @@
-async function chain_every(...args: Array<(...params: any[]) => Promise<unknown>>): Promise<boolean> {
+async function chain_every(...args: Array<() => Promise<boolean>>): Promise<boolean> {
 	if (args.length > 0) {
-		const fun = args.shift();
+		const [fun, ...rest] = args;
 		if (!fun) {
 			return true;
 		}
@@ -9,7 +9,7 @@ async function chain_every(...args: Array<(...params: any[]) => Promise<unknown>
 		if (!ret) {
 			return false;
 		}
-		return await chain_every(...args);
+		return await chain_every(...rest);
 	} else {
 		return true;
 	}

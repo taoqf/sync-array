@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 async function chain_every(...args) {
     if (args.length > 0) {
-        const fun = args.shift();
+        const [fun, ...rest] = args;
         if (!fun) {
             return true;
         }
@@ -10,7 +10,7 @@ async function chain_every(...args) {
         if (!ret) {
             return false;
         }
-        return await chain_every(...args);
+        return await chain_every(...rest);
     }
     else {
         return true;

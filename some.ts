@@ -1,6 +1,6 @@
-async function chain_some(...args: Array<(...params: any[]) => Promise<any>>): Promise<any> {
+async function chain_some(...args: Array<() => Promise<boolean>>): Promise<boolean> {
 	if (args.length > 0) {
-		const fun = args.shift();
+		const [fun, ...other] = args;
 		if (!fun) {
 			return false;
 		}
@@ -9,7 +9,7 @@ async function chain_some(...args: Array<(...params: any[]) => Promise<any>>): P
 		if (!!ret) {
 			return true;
 		}
-		return await chain_some(...args);
+		return await chain_some(...other);
 	} else {
 		return false;
 	}
