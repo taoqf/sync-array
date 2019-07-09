@@ -13,7 +13,8 @@
 		"compile:umd": "tsc -t es5 -m umd --outDir ./umd/",
 		"compile": "npm run compile:cjs & npm run compile:umd",
 		"build": "npm run lint && npm run compile",
-		"pretest": "tsc"
+		"pretest": "tsc",
+		"prepublishOnly": "npm run build"
 	},
 	"keywords": [
 		"array",
