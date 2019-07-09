@@ -10,8 +10,8 @@
 		"dev": "tsc --watch & ava --watch ./tests/*.test.js",
 		"lint": "tslint -p tsconfig.json",
 		"compile:cjs": "tsc -m commonjs",
-		"compile:umd": "tsc -t es5 -m umd --outDir ./umd/",
-		"compile": "npm run compile:cjs & npm run compile:umd",
+		"compile:amd": "tsc -t es5 -m amd -d false --outFile main.js",
+		"compile": "npm run compile:cjs & npm run compile:amd",
 		"build": "npm run lint && npm run compile",
 		"pretest": "tsc",
 		"prepublishOnly": "npm run build"
