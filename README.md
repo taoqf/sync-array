@@ -2,6 +2,8 @@
 
 Sync funcitons for Array.
 
+Void Excepton `Maximum call stack size exceeded`
+
 ## Installation
 
 ```sh
@@ -19,44 +21,31 @@ npm i --save sync-array
 ```ts
 import array from 'sync-array';
 // import forEach from 'sync-array/foreach';
-// const { forEach, map, every, some, reduce, reduceRight } = require('sync-array').default;
+// const { forEach, map, every, filter, some, reduce, reduceRight } = require('sync-array').default;
 
-function sleep(time: number){
+function sleep(timeout: number){
 	return new Promise<void>((resolve)=>{
-		setTimeout(resolve, time);
+		setTimeout(resolve, timeout);
 	});
 }
 
-async function say1(){
-	await sleep(10000);
-	console.log('1');
-}
+const arr = [1000, 500, 100];
 
-async function say2(){
-	await sleep(5000);
-	console.log('2');
-}
-
-async function say3(){
-	await sleep(1000);
-	console.log('3');
-}
-
-const funcs = [say1, say2, say3];
-
-funcs.forEach((say)=>{
-	say();
+arr.forEach(async (it)=>{
+	await sleep(it);
+	console.log(it);
 });
 
-// 3
-// 2
-// 1
+// 100
+// 500
+// 1000
 
-array.forEach(funcs, (say)=>{
-	return say();
+array.forEach(arr, async (it)=>{
+	await sleep(it);
+	console.log(it);
 });
-// 1
-// 2
-// 3
+// 1000
+// 500
+// 100
 
 ```
