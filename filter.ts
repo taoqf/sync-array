@@ -20,7 +20,11 @@ export default function filter<T>(arr: T[], callback: (it: T, i?: number, arr?: 
 	const funcs = arr.map((it, i, _arr) => {
 		return [
 			async () => {
-				return await callback(it, i, _arr);
+				try {
+					return await callback(it, i, _arr);
+				} catch {
+					return false;
+				}
 			},
 			it
 		] as [() => Promise<boolean>, T];

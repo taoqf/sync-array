@@ -42,3 +42,15 @@ test('sync-array.filter empty array', async (t) => {
 	});
 	t.is(ret.length, 0);
 });
+
+test('sync-array.filter empty reject promise', async (t) => {
+	const ret = await filter([1, 2, 3], async (it) => {
+		// await sleep(100);
+		if (it === 2) {
+			throw Error('test');
+		}
+		return it > 1;
+	});
+	t.is(ret.length, 1);
+	t.is(ret[0], 3);
+});
