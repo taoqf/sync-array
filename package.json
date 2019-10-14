@@ -26,7 +26,8 @@
 		"map",
 		"every",
 		"some",
-		"reduce"
+		"reduce",
+		"recursion"
 	],
 	"devDependencies": {
 		"ava": "latest",
